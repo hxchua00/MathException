@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MathException
 {
@@ -20,24 +21,43 @@ namespace MathException
                 Console.WriteLine();
                 Console.Write("Second Number: ");
                 y = Convert.ToInt32(Console.ReadLine());
+
+                result = MathMethods.Multiply(x, y);
+                Console.WriteLine("Multiplication: " + result);
+                result = MathMethods.Divide(x, y);
+                Console.WriteLine("Division: " + result);
             }
-            catch (ArgumentException)
+            catch (ArgumentException e)
             {
-                Console.WriteLine("Invalide input! Only numbers are allowed!");
-            }
-            catch (ArithmeticException)
-            {
-                Console.WriteLine("Non-Inegers are not allowed!");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Something went wrong! Please check through everything!");
+                Console.WriteLine($"Invalid input! Only numbers are allowed! {0}", e.Message);
                 Console.WriteLine();
             }
-            result = MathMethods.Multiply(x, y);
-            Console.WriteLine("Multiplication: " + result);
-            result = MathMethods.Divide(x, y);
-            Console.WriteLine("Division: " + result);
+            catch (ArithmeticException e)
+            {
+                Console.WriteLine($"Non-Inegers are not allowed! {0}", e.Message);
+                Console.WriteLine();
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine($"Wrong format! Please use the correct formats! {0}", e.Message);
+                Console.WriteLine();
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine($"Reference object not found! {0}", e.Message);
+                Console.WriteLine();    
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine($"I/O Error occured! {0}", e.Message);
+                Console.WriteLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Something went wrong! Please check through everything! {0}", e.Message);
+                Console.WriteLine();
+            }
+            
             Console.ReadLine();
         }
     }

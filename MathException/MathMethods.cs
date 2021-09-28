@@ -23,6 +23,10 @@ namespace MathException
             {
                 throw;
             }
+            catch (FormatException)
+            {
+                throw;
+            }
             catch (Exception)
             {
                 throw;
@@ -41,6 +45,10 @@ namespace MathException
                 throw;
             }
             catch (ArithmeticException)
+            {
+                throw;
+            }
+            catch (FormatException)
             {
                 throw;
             }
